@@ -21,17 +21,21 @@
         }
         .container {
             padding: 20px;
+            max-width: 600px;
+            margin: auto;
         }
-        .recommendation-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-            padding: 15px;
+        .input-group {
             margin-bottom: 15px;
         }
-        .recommendation-card h3 {
-            margin: 0 0 10px 0;
-            color: #28a745;
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         button {
             background-color: #28a745;
@@ -42,46 +46,205 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
+            width: 100%;
         }
         button:hover {
             background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            font-size: 18px;
+            color: #28a745;
         }
     </style>
 </head>
 <body>
 
-    <header>Crop Recommendations</header>
+<header>Crop Recommendations</header>
 
-    <div class="container">
-        <!-- Dummy crop recommendation cards -->
-        <div class="recommendation-card">
-            <h3>Wheat</h3>
-            <p>Best suited for loamy soil. Requires moderate water and sunlight.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Rice</h3>
-            <p>Prefer clayey soil. Plant during monsoon season for better yield.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Maize</h3>
-            <p>Suitable for well-drained soil. Fertilizer: Nitrogen-rich recommended.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Vegetables (Tomato, Capsicum)</h3>
-            <p>Require sandy-loam soil. Ensure regular watering and pest checks.</p>
-        </div>
-
-        <button onclick="goToFeedback()">Finish / Give Feedback</button>
+<div class="container">
+    <div class="input-group">
+        <label for="nitrogen">Nitrogen (N)</label>
+        <select id="nitrogen">
+            <option value="0">0</option>
+            <option value="3">3</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="31">31</option>
+            <option value="34">34</option>
+            <option value="40">40</option>
+            <option value="76">76</option>
+            <option value="85">85</option>
+            <option value="90">90</option>
+            <option value="92">92</option>
+        </select>
     </div>
 
-    <script>
-        function goToFeedback() {
-            window.location.href = "feedback.html";
-        }
-    </script>
+    <div class="input-group">
+        <label for="phosphorus">Phosphorus (P)</label>
+        <select id="phosphorus">
+            <option value="0">0</option>
+            <option value="42">42</option>
+            <option value="51">51</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+            <option value="60">60</option>
+            <option value="71">71</option>
+            <option value="72">72</option>
+            <option value="74">74</option>
+            <option value="79">79</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="potassium">Potassium (K)</label>
+        <select id="potassium">
+            <option value="0">0</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="23">23</option>
+            <option value="25">25</option>
+            <option value="41">41</option>
+            <option value="43">43</option>
+            <option value="77">77</option>
+            <option value="84">84</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="temperature">Temperature (°C)</label>
+        <select id="temperature">
+            <option value="0">0</option>
+            <option value="17.02">17.02</option>
+            <option value="18.15">18.15</option>
+            <option value="18.66">18.66</option>
+            <option value="19.02">19.02</option>
+            <option value="20.87">20.87</option>
+            <option value="21.77">21.77</option>
+            <option value="23.18">23.18</option>
+            <option value="23.38">23.38</option>
+            <option value="26.16">26.16</option>
+            <option value="36.04">36.04</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="humidity">Humidity (%)</label>
+        <select id="humidity">
+            <option value="0">0</option>
+            <option value="16.98">16.98</option>
+            <option value="19.38">19.38</option>
+            <option value="21.98">21.98</option>
+            <option value="22.31">22.31</option>
+            <option value="40.71">40.71</option>
+            <option value="43.61">43.61</option>
+            <option value="47.28">47.28</option>
+            <option value="71.51">71.51</option>
+            <option value="71.96">71.96</option>
+            <option value="80.31">80.31</option>
+            <option value="82.00">82.00</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="ph">Soil pH</label>
+        <select id="ph">
+            <option value="0">0</option>
+            <option value="4.75">4.75</option>
+            <option value="5.50">5.50</option>
+            <option value="5.72">5.72</option>
+            <option value="5.74">5.74</option>
+            <option value="5.90">5.90</option>
+            <option value="6.24">6.24</option>
+            <option value="6.50">6.50</option>
+            <option value="6.92">6.92</option>
+            <option value="7.03">7.03</option>
+            <option value="7.34">7.34</option>
+            <option value="7.48">7.48</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="rainfall">Rainfall (mm)</label>
+        <select id="rainfall">
+            <option value="0">0</option>
+            <option value="63.38">63.38</option>
+            <option value="69.93">69.93</option>
+            <option value="79.84">79.84</option>
+            <option value="79.92">79.92</option>
+            <option value="87.66">87.66</option>
+            <option value="100.77">100.77</option>
+            <option value="107.69">107.69</option>
+            <option value="141.12">141.12</option>
+            <option value="159.89">159.89</option>
+            <option value="202.93">202.93</option>
+            <option value="226.65">226.65</option>
+        </select>
+    </div>
+
+    <button onclick="predictCrop()">Predict Crop</button>
+    <div class="result" id="result">Recommended Crop: 0</div>
+</div>
+
+<script>
+    const dataset = [
+        {N:90,P:42,K:43,temp:20.87,hum:82,pH:6.50,rain:202.93,label:'rice'},
+        {N:85,P:58,K:41,temp:21.77,hum:80.31,pH:7.03,rain:226.65,label:'rice'},
+        {N:92,P:60,K:23,temp:18.66,hum:71.51,pH:5.72,rain:69.93,label:'maize'},
+        {N:76,P:51,K:18,temp:26.16,hum:71.96,pH:6.24,rain:79.84,label:'maize'},
+        {N:40,P:72,K:77,temp:17.02,hum:16.98,pH:7.48,rain:88.55,label:'chickpea'},
+        {N:23,P:72,K:84,temp:19.02,hum:17.13,pH:6.92,rain:79.92,label:'chickpea'},
+        {N:22,P:71,K:17,temp:18.15,hum:19.38,pH:5.50,rain:107.69,label:'kidneybeans'},
+        {N:31,P:79,K:25,temp:23.18,hum:22.31,pH:5.90,rain:63.38,label:'kidneybeans'},
+        {N:34,P:59,K:18,temp:23.38,hum:21.98,pH:5.74,rain:87.66,label:'kidneybeans'},
+        {N:20,P:74,K:16,temp:36.04,hum:43.61,pH:4.75,rain:159.89,label:'pigeonpeas'},
+        {N:19,P:57,K:23,temp:23.67,hum:47.28,pH:7.34,rain:141.12,label:'pigeonpeas'},
+        {N:3,P:60,K:19,temp:25.74,hum:40.71,pH:4.82,rain:100.77,label:'pigeonpeas'}
+    ];
+
+    let loopInterval;
+
+    function predictCrop() {
+        clearInterval(loopInterval); // stop previous loop
+
+        const N = parseFloat(document.getElementById('nitrogen').value);
+        const P = parseFloat(document.getElementById('phosphorus').value);
+        const K = parseFloat(document.getElementById('potassium').value);
+        const temp = parseFloat(document.getElementById('temperature').value);
+        const hum = parseFloat(document.getElementById('humidity').value);
+        const pH = parseFloat(document.getElementById('ph').value);
+        const rain = parseFloat(document.getElementById('rainfall').value);
+
+        const distances = dataset.map(d => ({
+            label: d.label,
+            dist: Math.sqrt(
+                Math.pow(N-d.N,2) + Math.pow(P-d.P,2) + Math.pow(K-d.K,2) +
+                Math.pow(temp-d.temp,2) + Math.pow(hum-d.hum,2) + Math.pow(pH-d.pH,2) +
+                Math.pow(rain-d.rain,2)
+            )
+        }));
+
+        distances.sort((a,b) => a.dist - b.dist);
+
+        let i = 0;
+        const resultDiv = document.getElementById('result');
+        loopInterval = setInterval(() => {
+            resultDiv.innerText = `Recommended Crop: ${distances[i].label}`;
+            i = (i + 1) % distances.length;
+        }, 1000);
+    }
+</script>
 
 </body>
 </html>
+

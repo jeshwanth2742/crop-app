@@ -1,39 +1,68 @@
-// ===== weather.js =====
+// weather.js
 
-// Function to show dummy weather advice
-function showWeatherAdvice() {
-    const location = document.getElementById('location')?.value;
-    const date = document.getElementById('date')?.value;
-    const adviceDiv = document.getElementById('advice');
+function getWeatherAlerts() {
+    const crop = document.getElementById("crop").value;
+    const month = document.getElementById("month").value;
+    const resultDiv = document.getElementById("result");
 
-    if(!location || !date) {
-        adviceDiv.style.display = "block";
-        adviceDiv.style.color = "red";
-        adviceDiv.textContent = "Please select both location and date.";
+    if(!crop || !month){
+        resultDiv.innerText = "Please select crop and month.";
         return;
     }
 
-    // Dummy weather advice logic
-    let advice = `Weather advice for ${location} on ${date}: `;
-    if(location === "Delhi") advice += "Sunny day expected. Ideal for sowing wheat.";
-    else if(location === "Mumbai") advice += "Moderate rainfall expected. Prepare rice fields.";
-    else if(location === "Bangalore") advice += "Cool weather expected. Good for maize planting.";
-
-    adviceDiv.style.display = "block";
-    adviceDiv.style.color = "green";
-    adviceDiv.textContent = advice;
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showAlerts, showError);
+    } else {
+        resultDiv.innerText = "Geolocation is not supported by this browser.";
+    }
 }
 
-// Redirect to feedback page
-function goToFeedback() {
-    window.location.href = "feedback.html";
+function showAlerts(position){
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const crop = document.getElementById("crop").value;
+    const month = document.getElementById("month").value;
+    const resultDiv = document.getElementById("result");
+
+    // Dummy weather data based on latitude/longitude for now
+    const temp = Math.floor(20 + (lat%10)); // just for demo
+    const humidity = Math.floor(40 + (lon%60));
+    const rainfall = Math.floor(Math.random()*200);
+
+    let alerts = `Weather update for your location (Lat: ${lat.toFixed(2)}, Lon: ${lon.toFixed(2)})\nCrop: ${crop}, Month: ${month}\n\n`;
+
+    // Temperature alerts
+    if(temp < 10) alerts += "- Frost Alert!\n";
+    else if(temp > 35) alerts += "- Heat Stress Warning!\n";
+    else alerts += "- Temperature is normal.\n";
+
+    // Rainfall alerts
+    if(rainfall === 0) alerts += "- Irrigation needed.\n";
+    else if(rainfall > 200) alerts += "- Flood warning!\n";
+    else alerts += "- Rainfall is adequate.\n";
+
+    // Humidity alerts
+    if(humidity < 40) alerts += "- Low humidity, increase watering.\n";
+    else if(humidity > 80) alerts += "- High humidity, check for fungal diseases.\n";
+    else alerts += "- Humidity is normal.\n";
+
+    resultDiv.innerText = alerts;
 }
 
-// Attach events on page load
-document.addEventListener("DOMContentLoaded", () => {
-    const adviceBtn = document.querySelector("#adviceBtn");
-    if(adviceBtn) adviceBtn.addEventListener("click", showWeatherAdvice);
+function showError(error){
+    const resultDiv = document.getElementById("result");
+    switch(error.code){
+        case error.PERMISSION_DENIED:
+            resultDiv.innerText = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            resultDiv.innerText = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            resultDiv.innerText = "The request to get user location timed out.";
+            break;
+        default:
+            resultDiv.innerText = "An unknown error occurred.";
+    }
+}
 
-    const feedbackBtn = document.querySelector("#feedbackBtn");
-    if(feedbackBtn) feedbackBtn.addEventListener("click", goToFeedback);
-});

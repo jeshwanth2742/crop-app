@@ -1,61 +1,51 @@
-// ===== soil.js =====
+// soil.js
 
-// Dummy soil health recommendations
-const soilRecommendations = [
-    {
-        type: "Loamy Soil",
-        advice: "Good for wheat and maize. Fertilizer: Nitrogen 20kg/acre, Phosphorus 10kg/acre."
-    },
-    {
-        type: "Clayey Soil",
-        advice: "Suitable for rice. Fertilizer: Nitrogen 25kg/acre, Potash 15kg/acre. Ensure proper drainage."
-    },
-    {
-        type: "Sandy Soil",
-        advice: "Suitable for vegetables. Fertilizer: Compost 2kg/m², Nitrogen 10kg/acre. Maintain moisture."
-    },
-    {
-        type: "Acidic Soil",
-        advice: "Apply lime to adjust pH. Fertilizer recommendations vary depending on crop type."
+function recommendFertilizer() {
+    const soilType = document.getElementById('soilType').value;
+    const N = document.getElementById('nitrogen').value;
+    const P = document.getElementById('phosphorus').value;
+    const K = document.getElementById('potassium').value;
+    const pH = document.getElementById('soilPH').value;
+
+    let recommendation = "";
+
+    if (!soilType || !N || !P || !K || !pH) {
+        recommendation = "Please select all options.";
+    } else {
+        // Soil type based suggestions
+        switch(soilType) {
+            case "sandy":
+                recommendation += "Use organic compost and slow-release NPK fertilizers. ";
+                break;
+            case "loamy":
+                recommendation += "Balanced NPK + organic matter recommended. ";
+                break;
+            case "clayey":
+                recommendation += "Gypsum and NPK fertilizers help improve drainage. ";
+                break;
+            case "silty":
+                recommendation += "Add NPK + organic compost to improve fertility. ";
+                break;
+            case "peaty":
+                recommendation += "Good organic matter content, adjust NPK as needed. ";
+                break;
+            case "chalky":
+                recommendation += "Use sulfur + NPK fertilizers to reduce alkalinity. ";
+                break;
+        }
+
+        // Nutrient deficiency suggestions
+        if(N === "low") recommendation += "Increase nitrogen levels. ";
+        if(P === "low") recommendation += "Increase phosphorus levels. ";
+        if(K === "low") recommendation += "Increase potassium levels. ";
+
+        // pH adjustment
+        if(pH === "acidic") recommendation += "Consider liming to neutralize acidity. ";
+        if(pH === "alkaline") recommendation += "Consider adding sulfur to reduce alkalinity. ";
     }
-];
 
-// Function to display recommendations on the page
-function displaySoilRecommendations() {
-    const container = document.querySelector(".container");
-    if(!container) return;
-
-    // Clear existing content
-    container.innerHTML = "";
-
-    soilRecommendations.forEach(soil => {
-        const card = document.createElement("div");
-        card.className = "recommendation-card";
-
-        const title = document.createElement("h3");
-        title.textContent = soil.type;
-
-        const desc = document.createElement("p");
-        desc.textContent = soil.advice;
-
-        card.appendChild(title);
-        card.appendChild(desc);
-
-        container.appendChild(card);
-    });
-
-    // Add Finish / Feedback button
-    const button = document.createElement("button");
-    button.textContent = "Finish / Give Feedback";
-    button.onclick = goToFeedback;
-    container.appendChild(button);
+    document.getElementById('result').innerText = recommendation;
 }
 
-// Redirect to feedback page
-function goToFeedback() {
-    window.location.href = "feedback.html";
-}
 
-// Call the function on page load
-document.addEventListener("DOMContentLoaded", displaySoilRecommendations);
 

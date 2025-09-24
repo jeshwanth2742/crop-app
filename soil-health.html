@@ -13,7 +13,7 @@
             padding: 0;
         }
         header {
-            background-color: #228b22;
+            background-color: #28a745;
             color: white;
             padding: 15px;
             text-align: center;
@@ -21,20 +21,24 @@
         }
         .container {
             padding: 20px;
+            max-width: 600px;
+            margin: auto;
         }
-        .recommendation-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-            padding: 15px;
+        .input-group {
             margin-bottom: 15px;
         }
-        .recommendation-card h3 {
-            margin: 0 0 10px 0;
-            color: #228b22;
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         button {
-            background-color: #228b22;
+            background-color: #28a745;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -42,46 +46,86 @@
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
+            width: 100%;
         }
         button:hover {
-            background-color: #196619;
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            font-size: 16px;
+            color: #28a745;
         }
     </style>
 </head>
 <body>
 
-    <header>Soil Health & Fertilizer Guide</header>
+<header>Soil Health & Fertilizer Guide</header>
 
-    <div class="container">
-        <!-- Dummy soil recommendation cards -->
-        <div class="recommendation-card">
-            <h3>Loamy Soil</h3>
-            <p>Good for wheat and maize. Fertilizer: Nitrogen 20kg/acre, Phosphorus 10kg/acre.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Clayey Soil</h3>
-            <p>Suitable for rice. Fertilizer: Nitrogen 25kg/acre, Potash 15kg/acre. Ensure proper drainage.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Sandy Soil</h3>
-            <p>Suitable for vegetables. Fertilizer: Compost 2kg/m², Nitrogen 10kg/acre. Maintain moisture.</p>
-        </div>
-
-        <div class="recommendation-card">
-            <h3>Acidic Soil</h3>
-            <p>Apply lime to adjust pH. Fertilizer recommendations vary depending on crop type.</p>
-        </div>
-
-        <button onclick="goToFeedback()">Finish / Give Feedback</button>
+<div class="container">
+    <div class="input-group">
+        <label for="soilType">Soil Type</label>
+        <select id="soilType">
+            <option value="">--Select Soil Type--</option>
+            <option value="sandy">Sandy</option>
+            <option value="loamy">Loamy</option>
+            <option value="clayey">Clayey</option>
+            <option value="silty">Silty</option>
+            <option value="peaty">Peaty</option>
+            <option value="chalky">Chalky</option>
+        </select>
     </div>
 
-    <script>
-        function goToFeedback() {
-            window.location.href = "feedback.html";
-        }
-    </script>
+    <div class="input-group">
+        <label for="nitrogen">Nitrogen (N)</label>
+        <select id="nitrogen">
+            <option value="">Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
 
+    <div class="input-group">
+        <label for="phosphorus">Phosphorus (P)</label>
+        <select id="phosphorus">
+            <option value="">Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="potassium">Potassium (K)</label>
+        <select id="potassium">
+            <option value="">Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="soilPH">Soil pH</label>
+        <select id="soilPH">
+            <option value="">Select</option>
+            <option value="acidic">Acidic (<6.0)</option>
+            <option value="neutral">Neutral (6.0–7.5)</option>
+            <option value="alkaline">Alkaline (>7.5)</option>
+        </select>
+    </div>
+
+    <button onclick="recommendFertilizer()">Get Fertilizer Recommendation</button>
+
+    <div class="result" id="result">Recommendation will appear here.</div>
+</div>
+
+<script src="js/soil.js"></script>
 </body>
 </html>
+

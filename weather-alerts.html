@@ -1,105 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Alerts</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f8ff;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #1e90ff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-        }
-        .container {
-            padding: 20px;
-        }
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        button {
-            background-color: #1e90ff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #187bcd;
-        }
-        .advice {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e6f7ff;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Alerts</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+    body { font-family: Arial, sans-serif; background: #f0fff0; margin:0; padding:0;}
+    header { background-color:#28a745; color:white; padding:15px; text-align:center; font-size:22px;}
+    .container { max-width:600px; margin:auto; padding:20px; }
+    .input-group { margin-bottom:15px; }
+    .input-group label { display:block; margin-bottom:5px; }
+    select, input { width:100%; padding:8px; border-radius:5px; border:1px solid #ccc; }
+    button { background-color:#28a745; color:white; border:none; padding:12px 20px; border-radius:5px; cursor:pointer; font-size:16px; width:100%; }
+    button:hover { background-color:#218838; }
+    .result { margin-top:20px; padding:15px; background:white; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.2); font-size:16px; color:#28a745; white-space:pre-line;}
+</style>
 </head>
 <body>
 
-    <header>Weather Alerts</header>
+<header>Weather Alerts</header>
 
-    <div class="container">
-        <label for="location">Select Location:</label>
-        <select id="location">
-            <option value="">--Select--</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Bangalore">Bangalore</option>
+<div class="container">
+    <div class="input-group">
+        <label for="crop">Crop</label>
+        <select id="crop">
+            <option value="">Select Crop</option>
+            <option value="Rice">Rice</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Maize">Maize</option>
+            <option value="Vegetables">Vegetables</option>
         </select>
-
-        <label for="date">Select Date:</label>
-        <input type="date" id="date">
-
-        <button onclick="showWeatherAdvice()">Get Weather Advice</button>
-
-        <div class="advice" id="advice"></div>
-
-        <button style="margin-top: 20px;" onclick="goToFeedback()">Finish / Give Feedback</button>
     </div>
 
-    <script>
-        function showWeatherAdvice() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const adviceDiv = document.getElementById('advice');
+    <div class="input-group">
+        <label for="month">Month</label>
+        <select id="month">
+            <option value="">Select Month</option>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+        </select>
+    </div>
 
-            if(location === "" || date === "") {
-                adviceDiv.style.display = "block";
-                adviceDiv.style.color = "red";
-                adviceDiv.textContent = "Please select both location and date.";
-                return;
-            }
+    <button onclick="getWeatherAlerts()">Check Weather Alerts</button>
+    <div class="result" id="result"></div>
+</div>
 
-            // Dummy weather advice logic
-            let advice = `Weather advice for ${location} on ${date}: `;
-            if(location === "Delhi") advice += "Sunny day expected. Ideal for sowing wheat.";
-            else if(location === "Mumbai") advice += "Moderate rainfall expected. Prepare rice fields.";
-            else if(location === "Bangalore") advice += "Cool weather expected. Good for maize planting.";
-
-            adviceDiv.style.display = "block";
-            adviceDiv.style.color = "green";
-            adviceDiv.textContent = advice;
-        }
-
-        function goToFeedback() {
-            window.location.href = "feedback.html";
-        }
-    </script>
-
+<script src="js/weather.js"></script>
 </body>
 </html>
+
