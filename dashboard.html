@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
-<link rel="stylesheet" href="css/dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-
-<header>Smart Crop Advisory Dashboard</header>
-
-<div class="dashboard-container">
-    <!-- Top row -->
-    <div class="dashboard-row">
-        <div class="dashboard-btn" onclick="location.href='crop-recommendation.html'">
-            <img src="assets/images/crop.jpg" alt="Crop" class="btn-icon">
-            <span class="btn-text">Crop Recommendation</span>
+    <div class="dashboard-container">
+        <div class="dashboard-row">
+            <button class="dashboard-btn" data-page="crop-recommendation.html">
+                <img src="assets/crop.jpg" alt="Crop" class="btn-icon">
+                <span class="btn-text">Crop Recommendations</span>
+            </button>
+            <button class="dashboard-btn" data-page="soil-health.html">
+                <img src="assets/soil.jpg" alt="Soil" class="btn-icon">
+                <span class="btn-text">Soil & Fertilizer</span>
+            </button>
         </div>
-        <div class="dashboard-btn" onclick="location.href='soil-health.html'">
-            <img src="assets/images/soil.jpg" alt="Soil" class="btn-icon">
-            <span class="btn-text">Soil & Fertilizer Guide</span>
-        </div>
-    </div>
 
-    <!-- Middle row -->
-    <div class="dashboard-row middle-row">
-        <div class="dashboard-btn" onclick="location.href='weather-alerts.html'">
-            <img src="assets/images/weather.jpg" alt="Weather" class="btn-icon">
-            <span class="btn-text">Weather Alerts</span>
+        <div class="dashboard-row middle-row">
+            <!-- Weather button redirects to external link -->
+            <button class="dashboard-btn" onclick="window.open('https://weather-4lebhb89ccysddhfihmhws.streamlit.app/', '_blank')">
+                <img src="assets/weather.jpg" alt="Weather" class="btn-icon">
+                <span class="btn-text">Weather Alerts</span>
+            </button>
         </div>
-    </div>
 
-    <!-- Bottom row -->
-    <div class="dashboard-row">
-        <div class="dashboard-btn" onclick="location.href='pest-detection.html'">
-            <img src="assets/images/pest.jpg" alt="Pest" class="btn-icon">
-            <span class="btn-text">Pest Detection</span>
-        </div>
-        <div class="dashboard-btn" onclick="location.href='market-price.html'">
-            <img src="assets/images/market.jpg" alt="Market" class="btn-icon">
-            <span class="btn-text">Market Price</span>
+        <div class="dashboard-row">
+            <button class="dashboard-btn" data-page="pest-detection.html">
+                <img src="assets/pest.jpg" alt="Pest" class="btn-icon">
+                <span class="btn-text">Pest Detection</span>
+            </button>
+            <button class="dashboard-btn" data-page="market-price.html">
+                <img src="assets/market.jpg" alt="Market" class="btn-icon">
+                <span class="btn-text">Market Prices</span>
+            </button>
         </div>
     </div>
 
-    <!-- Single bottom button -->
-    <div class="dashboard-row middle-row">
-        <div class="dashboard-btn" onclick="location.href='voice-support.html'">
-            <img src="assets/images/voice.jpg" alt="Voice" class="btn-icon">
-            <span class="btn-text">Voice Support</span>
-        </div>
-    </div>
-</div>
-
+    <script src="js/navigation.js"></script>
 </body>
 </html>
-
 
