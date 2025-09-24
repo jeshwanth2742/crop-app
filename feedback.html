@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Smart Crop Advisory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .feedback-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            color: #c71585;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            height: 100px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #c71585;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #a50f6c;
+        }
+        .message {
+            margin-top: 15px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feedback-container">
+        <h2>Give Your Feedback</h2>
+        <textarea id="feedback" placeholder="Enter your feedback here..."></textarea>
+        <button onclick="submitFeedback()">Submit</button>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            const feedback = document.getElementById('feedback').value.trim();
+            const message = document.getElementById('message');
+
+            if(feedback === "") {
+                message.style.color = "red";
+                message.textContent = "Please enter your feedback before submitting.";
+                return;
+            }
+
+            // Dummy submission - just show a success message
+            message.style.color = "green";
+            message.textContent = "Thank you for your feedback! Redirecting to dashboard...";
+
+            // Redirect to dashboard after 1 second
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

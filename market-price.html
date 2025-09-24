@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Price Tracking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff8c00;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .container {
+            padding: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #e07b00;
+        }
+        .advice {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff5e6;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>Market Price Tracking</header>
+
+    <div class="container">
+        <label for="location">Select Location:</label>
+        <select id="location">
+            <option value="">--Select--</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+
+        <label for="crop">Select Crop:</label>
+        <select id="crop">
+            <option value="">--Select--</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Rice">Rice</option>
+            <option value="Maize">Maize</option>
+            <option value="Tomato">Tomato</option>
+        </select>
+
+        <button onclick="showAdvice()">Get Advice</button>
+
+        <div class="advice" id="advice" style="display:none;"></div>
+
+        <button style="margin-top: 20px;" onclick="goToFeedback()">Finish / Give Feedback</button>
+    </div>
+
+    <script>
+        function showAdvice() {
+            const location = document.getElementById('location').value;
+            const crop = document.getElementById('crop').value;
+            const adviceDiv = document.getElementById('advice');
+
+            if(location === "" || crop === "") {
+                adviceDiv.style.display = "block";
+                adviceDiv.textContent = "Please select both location and crop.";
+                adviceDiv.style.color = "red";
+                return;
+            }
+
+            // Dummy advice logic
+            let advice = `For ${crop} in ${location}, `;
+            if(crop === "Wheat") advice += "sell within 2-3 weeks for best price.";
+            else if(crop === "Rice") advice += "wait until the monsoon season is over.";
+            else if(crop === "Maize") advice += "sell now to get high market rates.";
+            else if(crop === "Tomato") advice += "market price is currently good; sell soon.";
+
+            adviceDiv.style.display = "block";
+            adviceDiv.style.color = "green";
+            adviceDiv.textContent = advice;
+        }
+
+        function goToFeedback() {
+            window.location.href = "feedback.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+/* ===== style.css ===== */
+
+/* ===== General Styles ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0fff0;
+    color: #333;
+}
+
+header {
+    background-color: #228b22;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ===== Container for Pages ===== */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===== Buttons ===== */
+button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-color: #228b22;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* ===== Dashboard Buttons ===== */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 10px;
+}
+
+.dashboard-btn {
+    width: 200px;
+    height: 100px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ===== Recommendation / Info Cards ===== */
+.recommendation-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.recommendation-card h3 {
+    margin: 0 0 10px 0;
+    color: #228b22;
+}
+
+/* ===== Form Elements ===== */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* ===== Feedback & Result Messages ===== */
+#message, #advice, #result {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* ===== Voice Support Textarea ===== */
+.voice-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.voice-container h2 {
+    color: #0073e6;
+    margin-bottom: 20px;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #e6ffe6;
+    color: #228b22;
+    font-size: 16px;
+}

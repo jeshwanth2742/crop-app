@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Health & Fertilizer Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0fff0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #228b22;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .recommendation-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .recommendation-card h3 {
+            margin: 0 0 10px 0;
+            color: #228b22;
+        }
+        button {
+            background-color: #228b22;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #196619;
+        }
+    </style>
+</head>
+<body>
+
+    <header>Soil Health & Fertilizer Guide</header>
+
+    <div class="container">
+        <!-- Dummy soil recommendation cards -->
+        <div class="recommendation-card">
+            <h3>Loamy Soil</h3>
+            <p>Good for wheat and maize. Fertilizer: Nitrogen 20kg/acre, Phosphorus 10kg/acre.</p>
+        </div>
+
+        <div class="recommendation-card">
+            <h3>Clayey Soil</h3>
+            <p>Suitable for rice. Fertilizer: Nitrogen 25kg/acre, Potash 15kg/acre. Ensure proper drainage.</p>
+        </div>
+
+        <div class="recommendation-card">
+            <h3>Sandy Soil</h3>
+            <p>Suitable for vegetables. Fertilizer: Compost 2kg/m², Nitrogen 10kg/acre. Maintain moisture.</p>
+        </div>
+
+        <div class="recommendation-card">
+            <h3>Acidic Soil</h3>
+            <p>Apply lime to adjust pH. Fertilizer recommendations vary depending on crop type.</p>
+        </div>
+
+        <button onclick="goToFeedback()">Finish / Give Feedback</button>
+    </div>
+
+    <script>
+        function goToFeedback() {
+            window.location.href = "feedback.html";
+        }
+    </script>
+
+</body>
+</html>

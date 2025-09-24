@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Support</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .voice-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            color: #0073e6;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            height: 100px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="voice-container">
+        <h2>Voice Support</h2>
+        <textarea id="textToSpeak" placeholder="Type guidance text here...">Welcome to Smart Crop Advisory. You can navigate through features to get crop and soil recommendations, pest detection, and market advice.</textarea>
+        <button onclick="speakText()">Play Voice Guidance</button>
+        <button style="margin-top:10px;" onclick="goToFeedback()">Finish / Give Feedback</button>
+    </div>
+
+    <script>
+        function speakText() {
+            const text = document.getElementById('textToSpeak').value;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1; // normal speed
+                utterance.pitch = 1; // normal pitch
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser does not support text-to-speech.");
+            }
+        }
+
+        function goToFeedback() {
+            window.location.href = "feedback.html";
+        }
+    </script>
+
+</body>
+</html>

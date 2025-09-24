@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Advisory - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Simple inline CSS for demonstration */
+        body {
+            font-family: Arial, sans-serif;
+            background: #e6f2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #0073e6;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background: #005bb5;
+        }
+        .message {
+            margin-top: 15px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Smart Crop Advisory</h2>
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login / Register</button>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        // Dummy login function
+        function login() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const message = document.getElementById('message');
+
+            if(email === "" || password === "") {
+                message.textContent = "Please enter email and password";
+                return;
+            }
+
+            // Dummy login: accepts any email/password
+            message.style.color = "green";
+            message.textContent = "Login successful! Redirecting...";
+
+            // Redirect to dashboard after 1 second
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

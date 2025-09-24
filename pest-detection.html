@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pest/Disease Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5dc;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #6b8e23;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .container {
+            padding: 20px;
+        }
+        input[type="file"], button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #6b8e23;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #556b2f;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0fff0;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>Pest/Disease Detection</header>
+
+    <div class="container">
+        <p>Upload a leaf/crop image or use your camera (dummy detection)</p>
+        <input type="file" id="imageUpload" accept="image/*">
+        <!-- Dummy camera button (does not open real camera in this demo) -->
+        <button onclick="useCamera()">Use Camera</button>
+        <button onclick="detectPest()">Detect Pest / Disease</button>
+
+        <div class="result" id="result"></div>
+
+        <button style="margin-top: 20px;" onclick="goToFeedback()">Finish / Give Feedback</button>
+    </div>
+
+    <script>
+        function useCamera() {
+            alert("Camera access is not available in this demo. Please upload an image.");
+        }
+
+        function detectPest() {
+            const fileInput = document.getElementById('imageUpload');
+            const resultDiv = document.getElementById('result');
+
+            if(fileInput.files.length === 0) {
+                resultDiv.style.display = "block";
+                resultDiv.style.color = "red";
+                resultDiv.textContent = "Please upload an image first!";
+                return;
+            }
+
+            // Dummy pest/disease detection
+            resultDiv.style.display = "block";
+            resultDiv.style.color = "green";
+            resultDiv.textContent = "Detected: Leaf spot disease. Recommended: Apply neem oil spray every 7 days.";
+        }
+
+        function goToFeedback() {
+            window.location.href = "feedback.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Advisory - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        .grid-item {
+            background-color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+        .grid-item h3 {
+            margin: 0;
+            color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>Smart Crop Advisory - Dashboard</header>
+
+    <div class="grid-container">
+        <div class="grid-item" onclick="navigate('crop-recommendation.html')">
+            <h3>Crop Recommendations</h3>
+        </div>
+        <div class="grid-item" onclick="navigate('soil-health.html')">
+            <h3>Soil & Fertilizer Guide</h3>
+        </div>
+        <div class="grid-item" onclick="navigate('weather-alerts.html')">
+            <h3>Weather Alerts</h3>
+        </div>
+        <div class="grid-item" onclick="navigate('pest-detection.html')">
+            <h3>Pest/Disease Detection</h3>
+        </div>
+        <div class="grid-item" onclick="navigate('market-price.html')">
+            <h3>Market Price Tracking</h3>
+        </div>
+        <div class="grid-item" onclick="navigate('voice-support.html')">
+            <h3>Voice Support</h3>
+        </div>
+    </div>
+
+    <script>
+        function navigate(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</body>
+</html>
